@@ -1,0 +1,21 @@
+﻿@model CheeseMVC.Models.Cheese
+@{    
+}
+
+<h1>My Cheese</h1>
+
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+
+@if (ViewBag.cheeses.Count == 0)
+{
+    <p>No cheeses yet!</p>
+}
+
+<ul>
+    @foreach (KeyValuePair<string,string> cheese in ViewBag.cheeses)
+    {
+        <li>@cheese.Key : @cheese.Value <a asp-controller="Cheese" asp-action="RemoveCheese" asp-route-name="@cheese.Key">Remove Cheese </a></li> 
+        
+    }
+    
+</ul>
